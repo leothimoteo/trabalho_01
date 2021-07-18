@@ -67,6 +67,7 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+    	System.out.println("Olaaaasdfsdfsdfsdffdfsfdfsaa");
         String msg = "";
         int horario = getHoraAtual();
         
@@ -105,6 +106,7 @@ public class HelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String msg = "";
+        String faixa_etaria = "";
         
         int idade = 0;
         int horario = getHoraAtual();
@@ -117,6 +119,14 @@ public class HelloServlet extends HttpServlet {
         
         try {
 			idade = qualEMinhaIdade(request, local);
+			
+			if (idade < 50) {
+				faixa_etaria = "cringe";
+			}
+			else
+			{
+				faixa_etaria = "outro";
+			}
 		} catch (Exception e) {
 			throw new RuntimeException("Data não informada, você deve informar a data!!!");
 		}
@@ -133,7 +143,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
             out.println("<p>" + Cumprimento.getCumprimento() + "</p>");
-            out.println("<p>Minha idade é " + idade +" anos</p>");
+            out.println("<p>mudou " + faixa_etaria +" anos</p>");
             out.println("</body>");
             out.println("</html>");
         }
